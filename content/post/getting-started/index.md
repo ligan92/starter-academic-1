@@ -16,92 +16,101 @@ lastmod: "2019-04-17T00:00:00Z"
 featured: false
 draft: false
 
-# Featured image
-# To use, add an image named `featured.jpg/png` to your page's folder.
-# Placement options: 1 = Full column width, 2 = Out-set, 3 = Screen-width
-# Focal point options: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight
-image:
-  placement: 2
-  caption: 'Image credit: [**Unsplash**](https://unsplash.com/photos/CpkOjOcXdUY)'
-  focal_point: ""
-  preview_only: false
+本文从模型搜索NAS的问题出发，整理了最新ICLR2021相关投稿论文。 神经网络除了权重(W)之外，其通道数，算子类型和网络连接等结构参数需要设定，而模型搜索NAS即是确定结构参数的自动方法。最初NASNet中每种结构参数的模型单独训练带来的巨大开销，最近两年基于权重共享的NAS方法中，不同结构参数模型复用权重组成代理模型(SuperNet)一起训练，然后评测子模型指标并通过RL , EA , Random搜索(One-shot)或由参数化离散变连续用梯度下降(Darts)从结构参数空间(A)求解出最优子结构，最后重训最优子结构得最后需要的模型。整个流程中分为SuperNet训练，最优子模型搜索，重训三个阶段，其中搜索阶段时间因为不同的评测方式和指标，快则几秒慢则几天，而SuperNet训练周期一般设置成重训阶段相近，因此目前流行的权重共享搜索方法多是单独训练的两倍左右开销。其中结构参数空间如何建模，代理模型评测好坏是否真实(一致性)，以及训练开销是否可以进一步降低，这些问题对应投稿论文整理如下：
+One-shot方法中SuperNet训练以及一致性？  One-shot方法中大多以megvii 的Singlepath为framework，之后的改进工作主要集中在采样方式和具体训练策略上，GreedyNAS 和 AngleNAS分别用droppath和dropnode改进采样方式，Once for all和BigNAS利用训练策略使得SuperNet中子模型性能变强而省去了重训步骤，文【1】是年初的文章总结了训练细节比如分组BN等影响。 One-shot框架中其他问题如代理模型评测误差等也都有ICLR2021投稿工作研究；
+Darts方法的训练和优化方式？  Darts方法用bi-level优化轮替优化权重(W)和结构参数(A)，因为softmax以及无参数OP影响导致模型坍塌以及结果不稳定，文【2】通过引入辅助分支改善训练，文【3】加noise改善了模型坍塌，文【4】和文【5】都是解耦连接和OP的搜索。由于bi-level求解存在优化误差文，文【6】和文【7】采用single-level优化方法，希望这两篇工作能结束魔改Darts的局面；
+结构参数空间怎么建模？比如文【8】按照分布建模，文【9】按照流形建模，文【10】按照邻接关系建模，随着NAS benchmarks101等出现，直接用结构参数作为输入X，提前测试好的对应精度作为Y, 学习X到Y映射关系可以看作对搜索空间建模，这样工作有基于GCN, LSTM等的预测器以及排序器等，如文【6】，文【7】和文【11】等；
+NAS without training? 文【13】和 文【14】类似，以及我们所更早的工作ModuleNet，都是通过精心设计指标取代精度来避免权重训练的开销，虽然结果图有相关趋势，但是经实际评测一致性数值较低，其他如随机权重的工作基本只能解决很简单任务难以实用；
+新的NAS benchmark? 如 TransNAS-Bench-101，NAS-Bench-301，HW-NAS-Bench等，都是推动领域大大的好工作，respect！
+NAS的下游任务应用？检测上应用如文【16】, 量化上应用如文【17】等。
+总结：48篇文章中既有延续之前解决One-shot和Darts框架中训练不稳定以及减少评测误差等方面问题的文章，也有single-level优化，流形结构建模等反思前提假设的硬核文章，更多的NAS benchmark以及泛化应用推动NAS研究的进步与落地。诚然，模型搜索方面的研究大厦似乎已经落成，部分新的改进工作因为评测数据集简单(如cifar等)和不公平对比而难以判断良莠，期待大佬组以及大厂能够持续开坑以及贡献更多solid工作。
 
-# Projects (optional).
-#   Associate this post with one or more of your projects.
-#   Simply enter your project's folder or file name without extension.
-#   E.g. `projects = ["internal-project"]` references `content/project/deep-learning/index.md`.
-#   Otherwise, set `projects = []`.
-projects: []
----
-
-**Create a free website with Academic using Markdown, Jupyter, or RStudio. Choose a beautiful color theme and build anything with the Page Builder - over 40 _widgets_, _themes_, and _language packs_ included!**
-
-[Check out the latest **demo**](https://academic-demo.netlify.com/) of what you'll get in less than 10 minutes, or [view the **showcase**](https://sourcethemes.com/academic/#expo) of personal, project, and business sites.
-
-- 👉 [**Get Started**](#install)
-- 📚 [View the **documentation**](https://sourcethemes.com/academic/docs/)
-- 💬 [**Ask a question** on the forum](https://discourse.gohugo.io)
-- 👥 [Chat with the **community**](https://spectrum.chat/academic)
-- 🐦 Twitter: [@source_themes](https://twitter.com/source_themes) [@GeorgeCushen](https://twitter.com/GeorgeCushen) [#MadeWithAcademic](https://twitter.com/search?q=%23MadeWithAcademic&src=typd)
-- 💡 [Request a **feature** or report a **bug**](https://github.com/gcushen/hugo-academic/issues)
-- ⬆️ **Updating?** View the [Update Guide](https://sourcethemes.com/academic/docs/update/) and [Release Notes](https://sourcethemes.com/academic/updates/)
-- :heart: **Support development** of Academic:
-  - ☕️ [**Donate a coffee**](https://paypal.me/cushen)
-  - 💵 [Become a backer on **Patreon**](https://www.patreon.com/cushen)
-  - 🖼️ [Decorate your laptop or journal with an Academic **sticker**](https://www.redbubble.com/people/neutreno/works/34387919-academic)
-  - 👕 [Wear the **T-shirt**](https://academic.threadless.com/)
-  - :woman_technologist: [**Contribute**](https://sourcethemes.com/academic/docs/contribute/)
-
-{{< figure src="https://raw.githubusercontent.com/gcushen/hugo-academic/master/academic.png" title="Academic is mobile first with a responsive design to ensure that your site looks stunning on every device." >}}
-
-**Key features:**
-
-- **Page builder** - Create *anything* with [**widgets**](https://sourcethemes.com/academic/docs/page-builder/) and [**elements**](https://sourcethemes.com/academic/docs/writing-markdown-latex/)
-- **Edit any type of content** - Blog posts, publications, talks, slides, projects, and more!
-- **Create content** in [**Markdown**](https://sourcethemes.com/academic/docs/writing-markdown-latex/), [**Jupyter**](https://sourcethemes.com/academic/docs/jupyter/), or [**RStudio**](https://sourcethemes.com/academic/docs/install/#install-with-rstudio)
-- **Plugin System** - Fully customizable [**color** and **font themes**](https://sourcethemes.com/academic/themes/)
-- **Display Code and Math** - Code highlighting and [LaTeX math](https://en.wikibooks.org/wiki/LaTeX/Mathematics) supported
-- **Integrations** - [Google Analytics](https://analytics.google.com), [Disqus commenting](https://disqus.com), Maps, Contact Forms, and more!
-- **Beautiful Site** - Simple and refreshing one page design
-- **Industry-Leading SEO** - Help get your website found on search engines and social media
-- **Media Galleries** - Display your images and videos with captions in a customizable gallery
-- **Mobile Friendly** - Look amazing on every screen with a mobile friendly version of your site
-- **Multi-language** - 15+ language packs including English, 中文, and Português
-- **Multi-user** - Each author gets their own profile page
-- **Privacy Pack** - Assists with GDPR
-- **Stand Out** - Bring your site to life with animation, parallax backgrounds, and scroll effects
-- **One-Click Deployment** - No servers. No databases. Only files.
-
-## Themes
-
-Academic comes with **automatic day (light) and night (dark) mode** built-in. Alternatively, visitors can  choose their preferred mode - click the sun/moon icon in the top right of the [Demo](https://academic-demo.netlify.com/) to see it in action! Day/night mode can also be disabled by the site admin in `params.toml`.
-
-[Choose a stunning **theme** and **font**](https://sourcethemes.com/academic/themes/) for your site. Themes are fully [customizable](https://sourcethemes.com/academic/docs/customization/#custom-theme).
-
-## Ecosystem
-
-* **[Academic Admin](https://github.com/sourcethemes/academic-admin):** An admin tool to import publications from BibTeX or import assets for an offline site
-* **[Academic Scripts](https://github.com/sourcethemes/academic-scripts):** Scripts to help migrate content to new versions of Academic
-
-## Install
-
-You can choose from one of the following four methods to install:
-
-* [**one-click install using your web browser (recommended)**](https://sourcethemes.com/academic/docs/install/#install-with-web-browser)
-* [install on your computer using **Git** with the Command Prompt/Terminal app](https://sourcethemes.com/academic/docs/install/#install-with-git)
-* [install on your computer by downloading the **ZIP files**](https://sourcethemes.com/academic/docs/install/#install-with-zip)
-* [install on your computer with **RStudio**](https://sourcethemes.com/academic/docs/install/#install-with-rstudio)
-
-Then [personalize and deploy your new site](https://sourcethemes.com/academic/docs/get-started/).
-
-## Updating
-
-[View the Update Guide](https://sourcethemes.com/academic/docs/update/).
-
-Feel free to *star* the project on [Github](https://github.com/gcushen/hugo-academic/) to help keep track of [updates](https://sourcethemes.com/academic/updates).
-
-## License
-
-Copyright 2016-present [George Cushen](https://georgecushen.com).
-
-Released under the [MIT](https://github.com/gcushen/hugo-academic/blob/master/LICENSE.md) license.
+ICLR2021中NAS方面投稿文章整理：
+1. How to Train Your Super-Net: An Analysis of Training Heuristics in Weight-Sharing NAS
+2. DARTS-: Robustly Stepping out of Performance Collapse Without Indicators
+3. Noisy Differentiable Architecture Search 
+4. FTSO: Effective NAS via First Topology Second Operator
+Our method, named FTSO, reduces NAS's search time from days to 0.68 seconds while achieving 76.42% testing accuracy on ImageNet and 97.77% testing accuracy on CIFAR10 via searching for network topology and operators separately
+5. DOTS: Decoupling Operation and Topology in Differentiable Architecture Search
+We improve DARTS by discoupling the topology representation from the operation weights and make explicit topology search.
+4. Geometry-Aware Gradient Algorithms for Neural Architecture Search
+Studying the right single-level optimization geometry yields state-of-the-art methods for NAS.
+5. GOLD-NAS: Gradual, One-Level, Differentiable
+A new differentiable NAS framework incorporating one-level optimization and gradual pruning, working on large search spaces.
+6. Weak NAS Predictor Is All You Need
+We present a novel method to estimate weak predictors progressively in predictor-based neural architecture search. By coarse-to-fine iteration, the ranking of sampling space is refined gradually which helps find the optimal architectures eventually.
+7. Differentiable Graph Optimization for Neural Architecture Search
+we learn a differentiable graph neural network as a surrogate model to rank candidate architectures.
+8 . DrNAS: Dirichlet Neural Architecture Search 
+we propose a simple yet effective progressive learning scheme that enables searching directly on large-scale tasks, eliminating the gap between search and evaluation phases. Extensive experiments demonstrate the effectiveness of our method. 
+9 . Neural Architecture Search of SPD Manifold Networks
+we first introduce a geometrically rich and diverse SPD neural architecture search space for an efficient SPD cell design. Further, we model our new NAS problem using the supernet strategy which models the architecture search problem as a one-shot training process of a single supernet.
+10 . Neighborhood-Aware Neural Architecture Search
+We propose a neighborhood-aware formulation for neural architecture search to find flat minima in the search space that can generalize better to new settings.
+11 . A Surgery of the Neural Architecture Evaluators
+This paper assesses current fast neural architecture evaluators with multiple direct criteria, under controlled settings.
+12 . Exploring single-path Architecture Search ranking correlations
+An empirical study of how several method variations affect the quality of the architecture ranking prediction.
+13 . Neural Architecture Search without Training
+14 . Zero-Cost Proxies for Lightweight NAS
+A single minibatch of data is used to score neural networks for NAS instead of performing full training.
+15 . Improving Zero-Shot Neural Architecture Search with Parameters Scoring 
+A score can be designed taking into account the jacobian in parameter space, that is highly predictive of final performance in a task.
+16 . Multi-scale Network Architecture Search for Object Detection
+17. Triple-Search: Differentiable Joint-Search of Networks, Precision, and Accelerators
+We propose the Triple-Search framework to jointly search network structure, precision and hardware architecture in a differentiable manner.
+18 . TransNAS-Bench-101: Improving Transferrability and Generalizability of Cross-Task Neural Architecture Search 
+19 . Searching for Convolutions and a More Ambitious NAS 
+20 . EnTranNAS: Towards Closing the Gap between the Architectures in Search and Evaluation 
+We show how effective dimensionality can shed light on a number of phenomena in modern deep learning including double descent, width-depth trade-offs, and subspace inference, while providing a straightforward and compelling generalization metric.
+21 . Efficient Graph Neural Architecture Search
+ By designing a novel and expressive search space, an efficient one-shot NAS method based on stochastic relaxation and natural gradient is proposed. 
+22 . Searching for Convolutions and a More Ambitious NAS 
+A general-purpose search space for neural architecture search that enables discovering operations that beat convolutions on image data.
+23 . Exploring single-path Architecture Search ranking correlations
+An empirical study of how several method variations affect the quality of the architecture ranking prediction.
+24 . Network Architecture Search for Domain Adaptation
+25. HW-NAS-Bench: Hardware-Aware Neural Architecture Search Benchmark
+26. Neural Architecture Search on ImageNet in Four GPU Hours: A Theoretically Inspired Perspective
+Our TE-NAS framework analyzes the spectrum of the neural tangent kernel (NTK) and the number of linear regions in the input space, achieving high-quality architecture search while dramatically reducing the search cost to four hours on ImageNet.
+27. Stabilizing DARTS with Amended Gradient Estimation on Architectural Parameters
+Fixing errors in gradient estimation of architectural parameters for stabilizing the DARTS algorithm.
+28. NAS-Bench-301 and the Case for Surrogate Benchmarks for Neural Architecture Search 
+29. NASOA: Towards Faster Task-oriented Online Fine-tuning
+We propose a Neural Architecture Search and Online Adaption framework named NASOA towards a faster task-oriented fine-tuning upon the request of users.
+28. Model-based Asynchronous Hyperparameter and Neural Architecture Search 
+We present a new, asynchronous multi-fidelty Bayesian optimization method to efficiently search for hyperparameters and architectures of neural networks.
+29. Searching for Convolutions and a More Ambitious NAS
+A general-purpose search space for neural architecture search that enables discovering operations that beat convolutions on image data.
+30. A Gradient-based Kernel Approach for Efficient Network Architecture Search
+We first  formulate these two terms into a unified gradient-based kernel and then select architectures with the largest kernels at initialization as the final networks.  The new approach replaces the expensive "train-then-test'' evaluation paradigm.
+31. Fast MNAS: Uncertainty-aware Neural Architecture Search with Lifelong Learning 
+We proposed FNAS which accelerates standard RL based NAS process by 10x and guarantees better performance on various vision tasks.
+32. Explicit Learning Topology for Differentiable Neural Architecture Search
+33. NASLib: A Modular and Flexible Neural Architecture Search Library 
+34. TransNAS-Bench-101: Improving Transferrability and Generalizability of Cross-Task Neural Architecture Search
+35. Rethinking Architecture Selection in Differentiable NAS 
+36. Neural Architecture Search on ImageNet in Four GPU Hours: A Theoretically Inspired Perspective
+37. Rapid Neural Architecture Search by Learning to Generate Graphs from Datasets
+We propose an efficient NAS framework that is trained once on a database consisting of datasets and pretrained networks and can rapidly generate a neural architecture for a novel dataset.
+38. Interpretable Neural Architecture Search via Bayesian Optimisation with Weisfeiler-Lehman Kernels
+We propose a NAS method that is sample-efficient, highly performant and interpretable.
+39. AutoHAS: Efficient Hyperparameter and Architecture Search
+40. EnTranNAS: Towards Closing the Gap between the Architectures in Search and Evaluation 
+42. Differentiable Graph Optimization for Neural Architecture Search 
+we learn a differentiable graph neural network as a surrogate model to rank candidate architectures.
+41. Width transfer: on the (in)variance of width optimization
+we control the training configurations, i.e., network architectures and training data, for three existing width optimization algorithms and find that the optimized widths are largely transferable across settings. 
+42. NAHAS: Neural Architecture and Hardware Accelerator Search 
+We propose NAHAS, a latency-driven software/hardware co-optimizer that jointly optimize the design of neural architectures and a mobile edge processor.
+43. Neural Network Surgery: Combining Training with Topology Optimization
+We demonstrate a hybrid approach for combining neural network training with a genetic-algorithm based architecture optimization.
+44. Efficient Architecture Search for Continual Learning
+Our proposed CLEAS works closely with neural architecture search (NAS) which leverages reinforcement learning techniques to search for the best neural architecture that fits a new task.
+45. Auto Seg-Loss: Searching Metric Surrogates for Semantic Segmentation
+Auto Seg-Loss is the first general framework for searching surrogate losses for mainstream semantic segmentation metrics. 
+46. Improving Random-Sampling Neural Architecture Search by Evolving the Proxy Search Space
+47. SEDONA: Search for Decoupled Neural Networks toward Greedy Block-wise Learning
+Our approach is the first attempt to automate decoupling neural networks for greedy block-wise learning and outperforms both end-to-end backprop and state-of-the-art greedy-learning methods on CIFAR-10, Tiny-ImageNet and ImageNet classification.
+48. Intra-layer Neural Architecture Search 
+Neural architecture search at the level of individual weight parameters.
