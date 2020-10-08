@@ -21,13 +21,8 @@ subtitle = ""
   # Default filter index (e.g. 0 corresponds to the first `[[filter_button]]` instance below).
   filter_default = 1
 
-  [[content.filter_button]]
-     name = "Deep Learning"
-     tag = "Deep Learning"
-  
-  # [[content.filter_button]]
-  #   name = "Other"
-  #   tag = "Demo"
+  name = "Other"
+  tag = "*"
 
 [design]
   # Choose how many columns the section has. Valid values: 1 or 2.
