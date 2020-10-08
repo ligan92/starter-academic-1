@@ -1,18 +1,17 @@
 ---
-title: 'Academic: the website builder for Hugo'
-subtitle: 'Create a beautifully simple website in under 10 minutes :rocket:'
-summary: Create a beautifully simple website in under 10 minutes.
+title: 'ICLR2021的48篇投稿看模型搜索最新进展'
+subtitle: 'NAS paper on ILCR2021'
+summary: .
 authors:
-- admin
-- 吳恩達
+- lilujun
+- lilujun
 tags:
-- Academic
-- 开源
+- NAS
 categories:
 - Demo
 - 教程
-date: "2016-04-20T00:00:00Z"
-lastmod: "2019-04-17T00:00:00Z"
+date: "2020-10-03T00:00:00Z"
+lastmod: "2020-10-08T00:00:00Z"
 featured: false
 draft: false
 本文从模型搜索**NAS**的问题出发，整理了最新**ICLR2021**相关投稿论文。 神经网络除了权重**(W)**之外，其通道数，算子类型和网络连接等结构参数需要设定，而模型搜索NAS即是确定结构参数的自动方法。最初**NASNet**中每种结构参数的模型单独训练带来的巨大开销，最近两年基于权重共享的NAS方法中，不同结构参数模型复用权重组成代理模型**(SuperNet)**一起训练，然后评测子模型指标并通过**RL , EA , Random**搜索**(One-shot)**或由参数化离散变连续用梯度下降**(Darts)**从结构参数空间**(A)**求解出最优子结构，最后重训最优子结构得最后需要的模型。整个流程中分为**SuperNet**训练，最优子模型搜索，重训三个阶段，其中搜索阶段时间因为不同的评测方式和指标，快则几秒慢则几天，而**SuperNet**训练周期一般设置成重训阶段相近，因此目前流行的权重共享搜索方法多是单独训练的两倍左右开销。其中结构参数空间如何建模，代理模型评测好坏是否真实(一致性)，以及训练开销是否可以进一步降低，这些问题对应投稿论文整理如下：
