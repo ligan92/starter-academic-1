@@ -23,8 +23,8 @@ subtitle = ""
   # Page order. Descending (desc) or ascending (asc) date.
   order = "desc"
 
-  # Filter posts by a taxonomy term.
-  [content.filters]
+  # Filter posts by a taxonomy term
+ [content.filters]
     tag = "UCAS"
     category = "UCAS"
     publication_type = "UCAS"
