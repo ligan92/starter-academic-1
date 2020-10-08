@@ -20,14 +20,10 @@ subtitle = ""
   
   # Default filter index (e.g. 0 corresponds to the first `[[filter_button]]` instance below).
   filter_default = 1
-  
-  [UCAS]
-     name = "All"
-     tag = "*"
-  
-  # [[content.filter_button]]
-  #   name = "Deep Learning"
-  #   tag = "Deep Learning"
+
+  [[content.filter_button]]
+     name = "Deep Learning"
+     tag = "Deep Learning"
   
   # [[content.filter_button]]
   #   name = "Other"
