@@ -1,19 +1,111 @@
 ---
-title: 'ICLR2021的48篇投稿看模型搜索最新进展'
-subtitle: 'NAS paper on ILCR2021'
-summary: .
+title: 'Academic: the website builder for Hugo'
+subtitle: 'Create a beautifully simple website in under 10 minutes :rocket:'
+summary: Create a beautifully simple website in under 10 minutes.
 authors:
-- lilujun
-- lilujun
+- admin
+- 吳恩達
 tags:
-- NAS
+- Academic
+- 开源
 categories:
 - Demo
 - 教程
-date: "2020-10-03T00:00:00Z"
-lastmod: "2020-10-08T00:00:00Z"
+date: "2016-04-20T00:00:00Z"
+lastmod: "2019-04-17T00:00:00Z"
 featured: false
 draft: false
+
+# Featured image
+# To use, add an image named `featured.jpg/png` to your page's folder.
+# Placement options: 1 = Full column width, 2 = Out-set, 3 = Screen-width
+# Focal point options: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight
+image:
+  placement: 2
+  caption: 'Image credit: [**Unsplash**](https://unsplash.com/photos/CpkOjOcXdUY)'
+  focal_point: ""
+  preview_only: false
+
+# Projects (optional).
+#   Associate this post with one or more of your projects.
+#   Simply enter your project's folder or file name without extension.
+#   E.g. `projects = ["internal-project"]` references `content/project/deep-learning/index.md`.
+#   Otherwise, set `projects = []`.
+projects: []
+---
+
+**Create a free website with Academic using Markdown, Jupyter, or RStudio. Choose a beautiful color theme and build anything with the Page Builder - over 40 _widgets_, _themes_, and _language packs_ included!**
+
+[Check out the latest **demo**](https://academic-demo.netlify.com/) of what you'll get in less than 10 minutes, or [view the **showcase**](https://sourcethemes.com/academic/#expo) of personal, project, and business sites.
+
+- 👉 [**Get Started**](#install)
+- 📚 [View the **documentation**](https://sourcethemes.com/academic/docs/)
+- 💬 [**Ask a question** on the forum](https://discourse.gohugo.io)
+- 👥 [Chat with the **community**](https://spectrum.chat/academic)
+- 🐦 Twitter: [@source_themes](https://twitter.com/source_themes) [@GeorgeCushen](https://twitter.com/GeorgeCushen) [#MadeWithAcademic](https://twitter.com/search?q=%23MadeWithAcademic&src=typd)
+- 💡 [Request a **feature** or report a **bug**](https://github.com/gcushen/hugo-academic/issues)
+- ⬆️ **Updating?** View the [Update Guide](https://sourcethemes.com/academic/docs/update/) and [Release Notes](https://sourcethemes.com/academic/updates/)
+- :heart: **Support development** of Academic:
+  - ☕️ [**Donate a coffee**](https://paypal.me/cushen)
+  - 💵 [Become a backer on **Patreon**](https://www.patreon.com/cushen)
+  - 🖼️ [Decorate your laptop or journal with an Academic **sticker**](https://www.redbubble.com/people/neutreno/works/34387919-academic)
+  - 👕 [Wear the **T-shirt**](https://academic.threadless.com/)
+  - :woman_technologist: [**Contribute**](https://sourcethemes.com/academic/docs/contribute/)
+
+{{< figure src="https://raw.githubusercontent.com/gcushen/hugo-academic/master/academic.png" title="Academic is mobile first with a responsive design to ensure that your site looks stunning on every device." >}}
+
+**Key features:**
+
+- **Page builder** - Create *anything* with [**widgets**](https://sourcethemes.com/academic/docs/page-builder/) and [**elements**](https://sourcethemes.com/academic/docs/writing-markdown-latex/)
+- **Edit any type of content** - Blog posts, publications, talks, slides, projects, and more!
+- **Create content** in [**Markdown**](https://sourcethemes.com/academic/docs/writing-markdown-latex/), [**Jupyter**](https://sourcethemes.com/academic/docs/jupyter/), or [**RStudio**](https://sourcethemes.com/academic/docs/install/#install-with-rstudio)
+- **Plugin System** - Fully customizable [**color** and **font themes**](https://sourcethemes.com/academic/themes/)
+- **Display Code and Math** - Code highlighting and [LaTeX math](https://en.wikibooks.org/wiki/LaTeX/Mathematics) supported
+- **Integrations** - [Google Analytics](https://analytics.google.com), [Disqus commenting](https://disqus.com), Maps, Contact Forms, and more!
+- **Beautiful Site** - Simple and refreshing one page design
+- **Industry-Leading SEO** - Help get your website found on search engines and social media
+- **Media Galleries** - Display your images and videos with captions in a customizable gallery
+- **Mobile Friendly** - Look amazing on every screen with a mobile friendly version of your site
+- **Multi-language** - 15+ language packs including English, 中文, and Português
+- **Multi-user** - Each author gets their own profile page
+- **Privacy Pack** - Assists with GDPR
+- **Stand Out** - Bring your site to life with animation, parallax backgrounds, and scroll effects
+- **One-Click Deployment** - No servers. No databases. Only files.
+
+## Themes
+
+Academic comes with **automatic day (light) and night (dark) mode** built-in. Alternatively, visitors can  choose their preferred mode - click the sun/moon icon in the top right of the [Demo](https://academic-demo.netlify.com/) to see it in action! Day/night mode can also be disabled by the site admin in `params.toml`.
+
+[Choose a stunning **theme** and **font**](https://sourcethemes.com/academic/themes/) for your site. Themes are fully [customizable](https://sourcethemes.com/academic/docs/customization/#custom-theme).
+
+## Ecosystem
+
+* **[Academic Admin](https://github.com/sourcethemes/academic-admin):** An admin tool to import publications from BibTeX or import assets for an offline site
+* **[Academic Scripts](https://github.com/sourcethemes/academic-scripts):** Scripts to help migrate content to new versions of Academic
+
+## Install
+
+You can choose from one of the following four methods to install:
+
+* [**one-click install using your web browser (recommended)**](https://sourcethemes.com/academic/docs/install/#install-with-web-browser)
+* [install on your computer using **Git** with the Command Prompt/Terminal app](https://sourcethemes.com/academic/docs/install/#install-with-git)
+* [install on your computer by downloading the **ZIP files**](https://sourcethemes.com/academic/docs/install/#install-with-zip)
+* [install on your computer with **RStudio**](https://sourcethemes.com/academic/docs/install/#install-with-rstudio)
+
+Then [personalize and deploy your new site](https://sourcethemes.com/academic/docs/get-started/).
+
+## Updating
+
+[View the Update Guide](https://sourcethemes.com/academic/docs/update/).
+
+Feel free to *star* the project on [Github](https://github.com/gcushen/hugo-academic/) to help keep track of [updates](https://sourcethemes.com/academic/updates).
+
+## License
+
+Copyright 2016-present [George Cushen](https://georgecushen.com).
+
+Released under the [MIT](https://github.com/gcushen/hugo-academic/blob/master/LICENSE.md) license.
+
 本文从模型搜索**NAS**的问题出发，整理了最新**ICLR2021**相关投稿论文。 神经网络除了权重**(W)**之外，其通道数，算子类型和网络连接等结构参数需要设定，而模型搜索NAS即是确定结构参数的自动方法。最初**NASNet**中每种结构参数的模型单独训练带来的巨大开销，最近两年基于权重共享的NAS方法中，不同结构参数模型复用权重组成代理模型**(SuperNet)**一起训练，然后评测子模型指标并通过**RL , EA , Random**搜索**(One-shot)**或由参数化离散变连续用梯度下降**(Darts)**从结构参数空间**(A)**求解出最优子结构，最后重训最优子结构得最后需要的模型。整个流程中分为**SuperNet**训练，最优子模型搜索，重训三个阶段，其中搜索阶段时间因为不同的评测方式和指标，快则几秒慢则几天，而**SuperNet**训练周期一般设置成重训阶段相近，因此目前流行的权重共享搜索方法多是单独训练的两倍左右开销。其中结构参数空间如何建模，代理模型评测好坏是否真实(一致性)，以及训练开销是否可以进一步降低，这些问题对应投稿论文整理如下：
 
 - **One-shot方法中SuperNet训练以及一致性？**  One-shot方法中大多以megvii 的Singlepath为framework，之后的改进工作主要集中在采样方式和具体训练策略上，GreedyNAS 和 AngleNAS分别用droppath和dropnode改进采样方式，Once for all和BigNAS利用训练策略使得SuperNet中子模型性能变强而省去了重训步骤，文【1】是年初的文章总结了训练细节比如分组BN等影响。 One-shot框架中其他问题如代理模型评测误差等也都有ICLR2021投稿工作研究；
@@ -201,4 +293,4 @@ Our approach is the first attempt to automate decoupling neural networks for gre
 
 **48.** [**Intra-layer Neural Architecture Search**](https://openreview.net/forum?id=510f7KAPmYR) 
 
-Neural architecture search at the level of individual weight parameters..
+Neural architecture search at the level of individual weight parameters.
