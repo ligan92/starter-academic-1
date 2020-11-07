@@ -18,12 +18,12 @@ organizations:
   url: "http://www.ia.cas.cn/"
 
 # Short bio (displayed in user profile at end of posts)
-bio: I am a Ph.D. candidate of the Institute of Automation of the Chinese Academy of Sciences.My research interests include efficient neural network computing and optimization.
+bio: I am a Ph.D. candidate of the Institute of Automation of the Chinese Academy of Sciences.My research interests include Efficient Training and Inference Methods for Networks.
 
 interests:
 - Knowledge distillation
-- Model design and search
-- Model compression 
+- Neural architecture search
+- Network quantization
 
 education:
   courses:
@@ -70,6 +70,6 @@ user_groups:
 - Visitors
 ---
 
-I am a PhD candidate of the Institute of Automation, Chinese Academy of Sciences starting in 2019. My research interests mainly focus on the efficient optimization of neural networks, including knowledge distillation, neural network structure search and model pruning and quantification.
+I am a PhD candidate of the Institute of Automation, Chinese Academy of Sciences starting in 2019. My research interests mainly focus on the Efficient Training and Inference Methods for Networks, including knowledge distillation, Neural architecture search and Network quantization.
 
 I am about to open source a strong baseline of knowledge distillation and other open source projects.  Welcome to overseas exchanges and cooperation and a bright future !
