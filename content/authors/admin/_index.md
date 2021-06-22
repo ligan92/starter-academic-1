@@ -10,7 +10,7 @@ authors:
 superuser: true
 
 # Role/position
-role: Professor of Artificial Intelligence
+role: Ph.D. candidate
 
 # Organizations/Affiliations
 organizations:
@@ -27,7 +27,7 @@ interests:
 
 education:
   courses:
-  - course: PhD in Pattern Recognition and Intelligent Systems
+  - course: Ph.D. in Pattern Recognition and Intelligent Systems
     institution: Institute of Automation, Chinese Academy of Sciences
     year: 2019
   - course: BSc in Electronic Information Engineering
@@ -42,12 +42,9 @@ social:
 - icon: envelope
   icon_pack: fas
   link: '#contact'  # For a direct email link, use "mailto:lilujun2019@ia.ac.cn"
-- icon: twitter
-  icon_pack: fab
-  link: https://twitter.com/GeorgeCushen
 - icon: google-scholar
   icon_pack: ai
-  link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
+  link: https://scholar.google.com.hk/citations?hl=zh-CN&user=aPl3DjIAAAAJ
 - icon: github
   icon_pack: fab
   link: https://github.com/lilujunai
@@ -70,6 +67,8 @@ user_groups:
 - Visitors
 ---
 
-I am a PhD candidate of the Institute of Automation, Chinese Academy of Sciences starting in 2019. My research interests mainly focus on the Efficient Training and Inference Methods for Networks, including knowledge distillation, Neural architecture search and Network quantization.
+I am currently a second-year Ph.D. student at the Institute of Automation, Chinese Academy of Sciences (CASIA) advised by Prof. Prof. Qingyi Gu. Before that, I received my bachelor's degree from Central South Unversity (CSU) in 2019. 
 
-I am about to open source a strong baseline of knowledge distillation and other open source projects.  Welcome to overseas exchanges and cooperation and a bright future !
+
+My research interest includes machine learning and pattern recognition, with focus on Efficient Training and Inference Methods for Networks, including knowledge distillation, Neural architecture search and Network quantization. I served as a reviewer for ACMM'21. 
+
